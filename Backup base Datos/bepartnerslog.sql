@@ -28,20 +28,20 @@ CREATE TABLE IF NOT EXISTS `mp_log_transacion_user` (
   PRIMARY KEY (`Id_Log_Transaction_User`),
   KEY `fk_MP_LOG_TRANSACION_USER_MP_LOG_TRANSACTION_WS1_idx` (`Id_Log_Transaction_WS`),
   CONSTRAINT `fk_MP_LOG_TRANSACION_USER_MP_LOG_TRANSACTION_WS1` FOREIGN KEY (`Id_Log_Transaction_WS`) REFERENCES `mp_log_transaction_ws` (`Id_Log_Transaction_WS`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartnerslog.mp_log_transaction_user_info
 CREATE TABLE IF NOT EXISTS `mp_log_transaction_user_info` (
   `Id_Log_Transaction_User_Info` int(11) NOT NULL AUTO_INCREMENT,
   `Id_Log_Transaction_User` int(11) NOT NULL,
-  `Value` varchar(1024) NOT NULL,
+  `Value` varchar(10000) NOT NULL,
   `Transaction_Type` varchar(6) NOT NULL,
   `Create_Date` date NOT NULL,
   PRIMARY KEY (`Id_Log_Transaction_User_Info`),
   KEY `fk_MP_LOG_TRANSACTION_USER_INFO_MP_LOG_TRANSACION_USER_idx` (`Id_Log_Transaction_User`),
   CONSTRAINT `fk_MP_LOG_TRANSACTION_USER_INFO_MP_LOG_TRANSACION_USER` FOREIGN KEY (`Id_Log_Transaction_User`) REFERENCES `mp_log_transacion_user` (`Id_Log_Transaction_User`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartnerslog.mp_log_transaction_ws
@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `mp_log_transaction_ws` (
 CREATE TABLE IF NOT EXISTS `mp_log_transaction_ws_info` (
   `Id_Log_Transaction_Ws_Info` int(11) NOT NULL AUTO_INCREMENT,
   `Id_Log_Transaction_WS` int(11) NOT NULL,
-  `Enable` bit(1) NOT NULL,
+  `Enable` int(11) NOT NULL,
   `Value` varchar(1028) NOT NULL,
   `Transaction_WS_Type` varchar(6) NOT NULL,
   `Create_Date` date NOT NULL,
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `mp_user_thir_monitor` (
   `IdentificationNumber` varchar(45) NOT NULL,
   `Name` varchar(45) NOT NULL,
   `LastName` varchar(45) NOT NULL,
-  `Enable` varchar(45) NOT NULL,
+  `Enable` int(11) NOT NULL,
   `Date_Time_Execution` datetime NOT NULL,
   `Id_Log_Transaction_WS` int(11) DEFAULT NULL,
   PRIMARY KEY (`Id_User_Thir_Monitor`),
@@ -96,7 +96,7 @@ CREATE TABLE IF NOT EXISTS `mp_user_thir_monitor_info` (
   `Id_User_Thir_Monitor` int(11) NOT NULL,
   `Id_User_Thir_Monitor_Info_Type` varchar(6) NOT NULL,
   `Value` varchar(1028) NOT NULL,
-  `Enable` bit(1) NOT NULL,
+  `Enable` int(11) NOT NULL,
   `Create_Date` date NOT NULL,
   PRIMARY KEY (`Id_User_Thir_Monitor_Info`),
   KEY `fk_MP_USER_THIR_MONITOR_INFO_MP_USER_THIR_MONITOR1_idx` (`Id_User_Thir_Monitor`),
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `user_login` (
 CREATE TABLE IF NOT EXISTS `user_login_info` (
   `Id_User_Login_Info` int(11) NOT NULL AUTO_INCREMENT,
   `Id_User_Login` int(11) NOT NULL,
-  `Enable` bit(1) NOT NULL,
+  `Enable` int(11) NOT NULL,
   `Value` varchar(1028) NOT NULL,
   `User_Login_Type` varchar(6) NOT NULL,
   `CreateDate` date NOT NULL,
