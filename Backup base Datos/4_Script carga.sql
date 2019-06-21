@@ -81,11 +81,52 @@ INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`
 VALUES ('105', 'Catalog Respinse RUES', 'Se registran las posibles respuestas de Rues', b'1', '2019-06-12', '2019-06-12');
 -- INSERCION DE LOS ITEMS DE ESTE CATALOGO
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
-VALUES ('105001','105' , 'Aprobado', b'1', '2019-05-30', '2019-05-30');
+VALUES ('105001','105' , 'Activa', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
-VALUES ('105002','105' , 'Rechazado', b'1', '2019-05-30', '2019-05-30');
+VALUES ('105002','105' , 'Inactiva', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
-VALUES ('105003','105' , 'Error consulta', b'1', '2019-05-30', '2019-05-30');
+VALUES ('105003','105' , 'No hay resultado', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('105004','105' , 'Error consulta', b'1', '2019-05-30', '2019-05-30');
+
+/**
+INSERCION DE CATALOGO RESPUESTA SAP
+**/
+INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('106', 'Catalog Respinse SAP', 'Se registran las posibles respuestas de Sap', b'1', '2019-06-12', '2019-06-12');
+-- INSERCION DE LOS ITEMS DE ESTE CATALOGO
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('106001','106' , 'Exito', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('106002','106' , 'Error', b'1', '2019-05-30', '2019-05-30');
+
+/**
+INSERCION DE CATALOGO ESTADO MATRICULA  RUES
+**/
+INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('107', 'Catalog RTA RUES ', 'Se registran los estados de RUES', b'1', '2019-06-12', '2019-06-12');
+-- INSERCION DE LOS ITEMS DE ESTE CATALOGO
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('107001','107' , 'ACTIVA', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('107002','107' , 'IACTIVA', b'1', '2019-05-30', '2019-05-30');
+
+
+/**
+INSERCION DE CATALOGO RESPUESTA LISTAS RESTRICTIVAS
+**/
+INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('108', 'Catalog Respinse Listas Restrictivas', 'Se registran las posibles respuestas de Listas', b'1', '2019-06-12', '2019-06-12');
+-- INSERCION DE LOS ITEMS DE ESTE CATALOGO
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('108001','105' , 'No se encuentra coincidencia', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('108002','105' , 'Se encuentra coincidencia', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('108003','105' , 'Error consulta', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('108004','105' , 'Error WS', b'1', '2019-05-30', '2019-05-30');
+
 
 
 /*
@@ -119,6 +160,16 @@ INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`,
 VALUES ('301006','301' , 'Validate_List', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('301007','301' , 'Validate_Rues', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('301008','301' , 'clase_identificacion_Rues', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('301009','301' , 'estado_Rues', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('301010','301' , 'matricula', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('301011','301' , 'Respuesta_Rues', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('301012','301' , 'Respuesta_SAP', b'1', '2019-05-30', '2019-05-30');
 
 /***
 INSERCION RAZONES DE LOGS
@@ -129,12 +180,16 @@ INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`,
 VALUES ('401001','401' , 'Registro', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('401002','401' , 'Consulta RUES', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('401003','401' , 'Consulta Listas Restrictivas Tercero', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('401004','401' , 'Consulta Listas Restrictivas Usuario', b'1', '2019-05-30', '2019-05-30');
 
 /***
 INSERCION ESTATUS  DE LOGS
 **/
 INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
-VALUES ('402', 'Catalog Razones Logs', 'Se registran las razones de los logs', b'1', '2019-06-12', '2019-06-12');
+VALUES ('402', 'Catalog Estatus Logs', 'Se registran el status del log', b'1', '2019-06-12', '2019-06-12');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('402001','402' , 'Exito', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
@@ -146,7 +201,7 @@ INSERCION INFORMACION ADICIONAL REGISTRO EN EL LOG
 INSERT INTO `bepartners`.`u_catalog` (`Id_Catalog`, `CatalogName`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('403', 'Informacion Adicional Registro en Logs', 'Se registra la informacion adicioanal en el registro', b'1', '2019-06-12', '2019-06-12');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
-VALUES ('403001','403' , 'Peticion_JSON', b'1', '2019-05-30', '2019-05-30');
+VALUES ('403001','403' , 'Peticion_JSON WS', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('403002','403' , 'Error_JSON', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
@@ -157,10 +212,10 @@ INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`,
 VALUES ('403005','403' , 'Identificacion_Tercero', b'1', '2019-05-30', '2019-05-30');
 INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
 VALUES ('403006','403' , 'Tip_Identificacion_Tercero', b'1', '2019-05-30', '2019-05-30');
+INSERT INTO `bepartners`.`u_item_catalog` (`Id_Item`, `Id_Catalog`, `Item_Name`, `Enable`, `Create_Date`, `Last_Modify`) 
+VALUES ('403007','403' , 'Response_JSON WS', b'1', '2019-05-30', '2019-05-30');
 
 COMMIT;
-
-
 
 
 

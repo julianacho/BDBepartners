@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `bo_terms` (
   `Create_Date` date NOT NULL,
   `Last_modify` date NOT NULL,
   PRIMARY KEY (`Id_Terms`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_pc_transaction
@@ -142,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `mp_third` (
   PRIMARY KEY (`Id_Third`),
   UNIQUE KEY `index2` (`Identification_Number`,`Id_Type`),
   KEY `index3` (`Id_Third_Public`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COMMENT='		';
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COMMENT='		';
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_third_info
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `mp_third_info` (
   PRIMARY KEY (`Id_Third_Info`),
   KEY `FK_MP_Third_MP_ThirdInf_idx` (`Id_Third`),
   CONSTRAINT `FK_MP_Third_MP_ThirdInf` FOREIGN KEY (`Id_Third`) REFERENCES `mp_third` (`Id_Third`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COMMENT='	';
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COMMENT='	';
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_third_pc_plan
@@ -203,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `mp_user` (
   PRIMARY KEY (`Id_User`),
   UNIQUE KEY `index2` (`Id_Type`,`Identification_Number`),
   KEY `index3` (`Id_User_Public`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_user_info
@@ -218,7 +218,7 @@ CREATE TABLE IF NOT EXISTS `mp_user_info` (
   PRIMARY KEY (`Id_Use_Info`),
   KEY `FK_MP_U_UserInfo_MP_U_User_idx` (`Id_User`),
   CONSTRAINT `FK_MP_U_UserInfo_MP_U_User` FOREIGN KEY (`Id_User`) REFERENCES `mp_user` (`Id_User`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_user_third
@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS `mp_user_third` (
   KEY `FK_MP_Third_MP_User_idx1` (`Id_Third`),
   CONSTRAINT `FK_MP_Third_MP_User` FOREIGN KEY (`Id_Third`) REFERENCES `mp_third` (`Id_Third`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_MP_User_MP_Third` FOREIGN KEY (`Id_User`) REFERENCES `mp_user` (`Id_User`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.mp_user_third_terms
@@ -251,9 +251,197 @@ CREATE TABLE IF NOT EXISTS `mp_user_third_terms` (
   KEY `fk_MP_USER_THIRD_TERMS_BO_TERMS1_idx` (`Id_Terms`),
   CONSTRAINT `fk_MP_USER_THIRD_TERMS_BO_TERMS1` FOREIGN KEY (`Id_Terms`) REFERENCES `bo_terms` (`Id_Terms`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_MP_USER_THIRD_TERMS_MP_USER_THIRD1` FOREIGN KEY (`Id_User_Third`) REFERENCES `mp_user_third` (`Id_User_Third`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
+-- Volcando estructura para procedimiento bepartners.pa_create_product
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `pa_create_product`(
+	IN V_Name  varchar(80), IN V_Id_Product_Type  varchar(80) , IN V_ProductCode  varchar(80), IN V_Description  varchar(80))
+BEGIN
+DECLARE CONTINUE HANDLER FOR SQLEXCEPTION SELECT 0 AS RESULTADO FROM DUAL;
+ INSERT INTO `bepartners`.`bo_product` (`Name`, `Id_Product_Type`, `ProductCode`, `Description`, `Enable`, `Create_Date`, `Last_Modify`) 
+	 VALUES (V_Name , V_Id_Product_Type , V_ProductCode, V_Description, b'0', CURDATE(), CURDATE());
+  SELECT 1 AS RESULTADO FROM DUAL;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartners.SP_UpSert_Third
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpSert_Third`(
+   IN v_Id_Third_Public varchar(80), IN V_Id_Type  varchar(80) , IN V_Identification_Number  varchar(80), IN V_Business_Name  varchar(80), IN V_Enable  varchar(1) )
+BEGIN
+IF V_Id_Third_Public = '' THEN
+		INSERT INTO `bepartners`.`mp_third` 
+		(`Id_Third_Public`
+		, `Id_Type`
+		, `Identification_Number`
+		, `Business_Name`
+		, `Enable`
+		, `Create_Date`
+		, `Last_Modify`) 
+		VALUES (UUID(), V_Id_Type, V_Identification_Number, V_Business_Name, V_Enable, CURDATE(), CURDATE());
+ELSE
+		UPDATE `bepartners`.`mp_third` 
+		SET `Business_Name`=V_Business_Name, `Enable`=V_Enable, `Last_Modify`=CURDATE()  WHERE  `Id_Third_Public`=v_Id_Third_Public;
+END IF;
+		COMMIT;
+		SELECT * FROM `bepartners`.`mp_third` WHERE  Identification_Number=V_Identification_Number AND Id_Type=V_Id_Type;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartners.SP_UpSert_Third_Basic_Info
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpSert_Third_Basic_Info`(
+	 IN V_Id_Third_Public  varchar(80) , IN V_Id_Info_Type_Third  varchar(80),  IN V_Value  varchar(80),IN V_Enable  varchar(1) )
+BEGIN
+
+DECLARE V_Id_Third_Infio INT;
+
+
+SELECT inf.Id_Third_Info INTO V_Id_Third_Infio
+FROM mp_third_info inf
+JOIN mp_third thr ON thr.Id_Third=inf.Id_Third
+WHERE thr.Id_Third_Public=V_Id_Third_Public
+AND inf.Id_Info_Type_Third=V_Id_Info_Type_Third;
+
+IF V_Id_Third_Infio > 0 THEN
+	UPDATE `bepartners`.`mp_third_info` 
+	SET `Value`=V_Value, `Enable`=V_Enable, `Last_Modify`=CURDATE()
+	WHERE  `Id_Third_Info`=V_Id_Third_Infio AND `Id_Info_Type_Third`=V_Id_Info_Type_Third;		
+ELSE	
+	INSERT INTO `bepartners`.`mp_third_info` (`Id_Third`, `Id_Info_Type_Third`, `Value`, `Enable`, `Create_Date`, `Last_Modify`) 
+	VALUES ((SELECT th.Id_Third FROM mp_third th WHERE th.Id_Third_Public=V_Id_Third_Public), V_Id_Info_Type_Third, V_Value, V_Enable, CURDATE(), CURDATE());		
+END IF;
+
+SELECT inf.*
+FROM mp_third_info inf 
+JOIN mp_third thr ON thr.Id_Third=inf.Id_Third
+WHERE thr.Id_Third_Public=V_Id_Third_Public AND inf.Id_Info_Type_Third=V_Id_Info_Type_Third;
+	
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartners.SP_UpSert_User
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpSert_User`(
+	IN V_Id_User_Public  varchar(80) , IN V_Id_Type  varchar(80) , IN V_Identification_Number  varchar(80), IN V_Name  varchar(80), IN V_Last_Name  varchar(80) , IN V_Email  varchar(80), IN V_Phone  varchar(80), IN V_Profile_Picture  varchar(80),IN V_Enable  varchar(1) )
+BEGIN
+
+IF V_Id_User_Public = '' THEN
+		INSERT INTO `bepartners`.`mp_user` (`Id_User_Public`, `Id_Type`, `Identification_Number`, `Name`, `Last_Name`, `Email`, `Phone`, `Profile_Picture`, `Enable`, `Create_Date`, `Last_Date`) 
+		VALUES (UUID()
+		, V_Id_Type, 
+		V_Identification_Number, 
+		V_Name, 
+		V_Last_Name, 
+		V_Email, 
+		V_Phone, 
+		V_Profile_Picture, 
+		V_Enable, 
+		CURDATE(), 
+		CURDATE());
+ELSE
+		UPDATE `bepartners`.`mp_user` 
+		SET `Last_Name`=V_Last_Name,
+		`Email`=V_Email,
+		`Phone`=V_Phone,
+		`Profile_Picture`=V_Profile_Picture,
+		 `Enable`=V_Enable, 
+		 `Last_Date`=CURDATE()  
+		 WHERE  `Id_User_Public`=V_Id_User_Public;
+END IF;
+COMMIT;
+SELECT * FROM bepartners.mp_user WHERE Id_Type=V_Id_Type AND Identification_Number=V_Identification_Number;
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartners.SP_UpSert_User_Info
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpSert_User_Info`(
+	 IN V_Id_User_Public  varchar(80) , IN V_Id_Info_Type_User  varchar(80),  IN V_Value  varchar(80), IN V_Enable  varchar(1) )
+BEGIN
+
+DECLARE V_Id_Use_Infio INT;
+
+SELECT inf.Id_Use_Info INTO V_Id_Use_Infio
+FROM mp_user_info inf 
+JOIN mp_user us ON us.Id_User=inf.Id_User
+WHERE us.Id_User_Public=V_Id_User_Public
+AND inf.Id_Info_Type_User=V_Id_Info_Type_User;
+
+IF V_Id_Use_Infio > 0 THEN
+	UPDATE `bepartners`.`mp_user_info` 
+	SET `Value`=V_Value, `Enable`=V_Enable, `Last_Modify`=CURDATE()
+	WHERE  `Id_Use_Info`=V_Id_Use_Infio AND `Id_Info_Type_User`=V_Id_Info_Type_User;	
+ELSE
+	INSERT INTO `bepartners`.`mp_user_info` (`Id_User`, `Id_Info_Type_User`, `Value`, `Enable`, `Create_Date`, `Last_Modify`) 
+	VALUES ((SELECT us.id_User FROM mp_user us  WHERE us.Id_User_Public=V_Id_User_Public), V_Id_Info_Type_User, V_Value, V_Enable, CURDATE(), CURDATE());
+END IF;
+
+COMMIT;
+
+SELECT inf.*
+FROM mp_user_info inf 
+JOIN mp_user us ON us.Id_User=inf.Id_User
+WHERE us.Id_User_Public=V_Id_User_Public
+AND inf.Id_Info_Type_User=V_Id_Info_Type_User;
+
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartners.SP_UpSert_User_third
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_UpSert_User_third`(
+	 IN V_Id_User_Public  varchar(80) , IN V_Id_Third_Public  varchar(80), IN V_Enable  char(1) )
+BEGIN
+
+DECLARE V_Id_User_Third INT;
+		SELECT ust.Id_User_Third INTO V_Id_User_Third
+		FROM mp_user_third  ust
+		JOIN mp_user us ON ust.Id_User=us.Id_User
+		JOIN mp_third th ON ust.Id_Third=th.Id_Third
+		WHERE us.Id_User_Public=V_Id_User_Public
+		AND th.Id_Third_Public=V_Id_Third_Public;
+		
+IF V_Id_User_Third > 0 THEN
+   UPDATE `bepartners`.`mp_user_third` 
+	SET  `Enable`=V_Enable, `Last_Modify`=CURDATE()
+	WHERE  `Id_User_Third`=V_Id_User_Third;
+
+ELSE
+
+	INSERT INTO `bepartners`.`mp_user_third` (`Id_User`, `Id_Third`, `Enable`, `Create_Date`, `Last_Modify`) 
+	VALUES (
+	(SELECT us.id_User FROM mp_user us  WHERE us.Id_User_Public=V_Id_User_Public), 
+	(SELECT th.Id_Third FROM mp_third th WHERE th.Id_Third_Public=V_Id_Third_Public), b'0', CURDATE(), CURDATE());
+
+
+	INSERT INTO `bepartners`.`mp_user_third_terms` (`Id_User_Third`, `Id_Terms`, `Enable`, `Create_Date`, `Last_Modify`) 
+	VALUES (
+	(
+
+	SELECT usr_th.Id_User_Third FROM bepartners.mp_user_third usr_th 
+	JOIN mp_user us1 ON usr_th.Id_User=us1.id_User AND us1.Id_User_Public=V_Id_User_Public
+	JOIN mp_third th1 ON usr_th.Id_Third = th1.Id_Third AND  th1.Id_Third_Public=V_Id_Third_Public
+
+	)
+	, 
+	(SELECT tr.Id_terms FROM bo_terms tr WHERE tr.Enable=b'0')
+	, V_Enable, CURDATE(), CURDATE());
+
+END IF;
+
+	SELECT ust.Id_User_Third FROM mp_user_third  ust
+	JOIN mp_user us ON ust.Id_User=us.Id_User
+	JOIN mp_third th ON ust.Id_Third=th.Id_Third
+	WHERE us.Id_User_Public=V_Id_User_Public
+	AND th.Id_Third_Public=V_Id_Third_Public;
+
+
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla bepartners.u_catalog
 CREATE TABLE IF NOT EXISTS `u_catalog` (
   `Id_Catalog` int(11) NOT NULL,
@@ -290,7 +478,7 @@ CREATE TABLE IF NOT EXISTS `u_item_catalog` (
   PRIMARY KEY (`Id_Item_Catalog`),
   KEY `fk_Item_Catalog_U_Catalog_idx` (`Id_Catalog`),
   CONSTRAINT `fk_Item_Catalog_U_Catalog` FOREIGN KEY (`Id_Catalog`) REFERENCES `u_catalog` (`Id_Catalog`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartners.u_tree

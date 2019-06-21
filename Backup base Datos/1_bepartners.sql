@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mp_log_transacion_user` (
   PRIMARY KEY (`Id_Log_Transaction_User`),
   KEY `fk_MP_LOG_TRANSACION_USER_MP_LOG_TRANSACTION_WS1_idx` (`Id_Log_Transaction_WS`),
   CONSTRAINT `fk_MP_LOG_TRANSACION_USER_MP_LOG_TRANSACTION_WS1` FOREIGN KEY (`Id_Log_Transaction_WS`) REFERENCES `mp_log_transaction_ws` (`Id_Log_Transaction_WS`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartnerslog.mp_log_transaction_user_info
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `mp_log_transaction_user_info` (
   PRIMARY KEY (`Id_Log_Transaction_User_Info`),
   KEY `fk_MP_LOG_TRANSACTION_USER_INFO_MP_LOG_TRANSACION_USER_idx` (`Id_Log_Transaction_User`),
   CONSTRAINT `fk_MP_LOG_TRANSACTION_USER_INFO_MP_LOG_TRANSACION_USER` FOREIGN KEY (`Id_Log_Transaction_User`) REFERENCES `mp_log_transacion_user` (`Id_Log_Transaction_User`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
 -- Volcando estructura para tabla bepartnerslog.mp_log_transaction_ws
@@ -104,6 +104,34 @@ CREATE TABLE IF NOT EXISTS `mp_user_thir_monitor_info` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- La exportación de datos fue deseleccionada.
+-- Volcando estructura para procedimiento bepartnerslog.SP_Insert_User_Log
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_Insert_User_Log`(
+	 IN v_Id_Third_Public  varchar(80) , IN v_Id_User_Public  varchar(80),  IN V_Id_Razon  varchar(80),IN V_Id_Estatus  varchar(80) )
+BEGIN
+
+INSERT INTO `bepartnerslog`.`mp_log_transacion_user` (`Id_Third_Public`, `Id_User_Public`, `Id_Reason_Type`, `Date_Time_Register`, `Id_Status`) 
+VALUES (v_Id_Third_Public, v_Id_User_Public, V_Id_Razon, CURDATE(), V_Id_Estatus);
+
+SELECT MAX(Id_Log_transaction_User) as Id_Log_transaction_User  FROM `bepartnerslog`.`mp_log_transacion_user`
+WHERE Id_Third_Public=v_Id_Third_Public AND Id_User_Public=v_Id_User_Public;
+
+	
+END//
+DELIMITER ;
+
+-- Volcando estructura para procedimiento bepartnerslog.SP_Insert_User_Log_Info
+DELIMITER //
+CREATE DEFINER=`root`@`localhost` PROCEDURE `SP_Insert_User_Log_Info`(
+	 IN V_Id_Log_Transaction_User  INT , IN V_Value  VARCHAR(10000),  IN V_Transaction_Type  varchar(80))
+BEGIN
+
+INSERT INTO `bepartnerslog`.`mp_log_transaction_user_info` (`Id_Log_Transaction_User`, `Value`, `Transaction_Type`, `Create_Date`) 
+VALUES (V_Id_Log_Transaction_User, V_Value, V_Transaction_Type, CURDATE());
+	
+END//
+DELIMITER ;
+
 -- Volcando estructura para tabla bepartnerslog.user_login
 CREATE TABLE IF NOT EXISTS `user_login` (
   `Id_User_Login` int(11) NOT NULL AUTO_INCREMENT,
