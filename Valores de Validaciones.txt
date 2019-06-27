@@ -1,0 +1,40 @@
+Usuario Adicional Info
+
+VALIDATE_LIST("201001"), 
+VALIDATE_EVIDENTE("201002");
+
+201001 Validate List
+vALORES POSIBLES
+102001 'Reportado',
+102002 'No Reportado'
+102003 'Error consulta Listas'
+
+
+
+Info Adicional Tercero
+
+RAZON_SOCIAL("301001"), 
+MAIL_FACTURACION("301002"), 
+DIRECCION_CORRESPONDENCIA("301003"), 
+CIUDAD("301004"),
+DEPARTAMENTO("301005"), 
+VALIDATE_LIST("301006"), 
+VALIDATE_RUES("301007")
+	
+
+
+301006 Validate List
+vALORES POSIBLES
+102001 'Reportado',
+102002 'No Reportado'
+102003 'Error consulta Listas'
+
+
+
+301007 Validate Rues
+vALORES POSIBLES
+105001 =>'Activa'
+105002 => 'Inactiva'
+105003 => No hay resultado'
+105004 => Error consulta'
+
