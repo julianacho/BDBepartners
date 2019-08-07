@@ -3546,12 +3546,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _domain_enums_Catalog_enum__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../../../domain/enums/Catalog.enum */ "./src/domain/enums/Catalog.enum.ts");
 /* harmony import */ var _Dialog_DialogComponent__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../Dialog/DialogComponent */ "./src/client/app/modules/user/Dialog/DialogComponent.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var _domain_models_register_categoryrequest_model__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../../../../domain/models/register/categoryrequest.model */ "./src/domain/models/register/categoryrequest.model.ts");
-/* harmony import */ var _services_register_category_provider__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../services/register/category.provider */ "./src/client/app/services/register/category.provider.ts");
-/* harmony import */ var _services_register_status_provider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../services/register/status.provider */ "./src/client/app/services/register/status.provider.ts");
-/* harmony import */ var angular_archwizard__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! angular-archwizard */ "./node_modules/angular-archwizard/fesm5/angular-archwizard.js");
-/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _rues_rues_user__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../rues/rues-user */ "./src/client/app/modules/user/rues/rues-user.ts");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _domain_models_register_categoryrequest_model__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../../../../../domain/models/register/categoryrequest.model */ "./src/domain/models/register/categoryrequest.model.ts");
+/* harmony import */ var _services_register_category_provider__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ../../../services/register/category.provider */ "./src/client/app/services/register/category.provider.ts");
+/* harmony import */ var _services_register_status_provider__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ../../../services/register/status.provider */ "./src/client/app/services/register/status.provider.ts");
+/* harmony import */ var angular_archwizard__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! angular-archwizard */ "./node_modules/angular-archwizard/fesm5/angular-archwizard.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+
 
 
 
@@ -3593,12 +3595,12 @@ var CreateRegisterComponent = /** @class */ (function () {
         //	public emailThirdInfo= new ThirdInfo();
         this.addresThirdInfo = new _domain_models_register_thirdInfo_model__WEBPACK_IMPORTED_MODULE_7__["ThirdInfo"]();
         this.cityThirdInfo = new _domain_models_register_thirdInfo_model__WEBPACK_IMPORTED_MODULE_7__["ThirdInfo"]();
-        this.cityCategory = new _domain_models_register_categoryrequest_model__WEBPACK_IMPORTED_MODULE_16__["CategoryRequest"]();
+        this.cityCategory = new _domain_models_register_categoryrequest_model__WEBPACK_IMPORTED_MODULE_17__["CategoryRequest"]();
         this.error = false;
         this.is_edit = true;
         /**Inicio Auto-complete*/
         this.formatter = function (x) { return x.nomHijo + ", " + x.nomPadre; };
-        this.search = function (text$) { return text$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_15__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_15__["map"])(function (term) { return term === '' ? [] : _this.listCities.filter(function (v) { return v.nomHijo.toLowerCase().indexOf(term.toLowerCase()) > -1; }).slice(0, 10); })); };
+        this.search = function (text$) { return text$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_16__["map"])(function (term) { return term === '' ? [] : _this.listCities.filter(function (v) { return v.nomHijo.toLowerCase().indexOf(term.toLowerCase()) > -1; }).slice(0, 10); })); };
         this.callCities();
     }
     CreateRegisterComponent.prototype.ngOnInit = function () {
@@ -3617,7 +3619,6 @@ var CreateRegisterComponent = /** @class */ (function () {
         });
     };
     CreateRegisterComponent.prototype.sameTextId = function (event) {
-        debugger;
         var inputIdCompanie = document.getElementById("Nit");
         var inputId = document.getElementById("numDoc");
         var typeId = document.getElementById("typeDocComp");
@@ -3640,7 +3641,6 @@ var CreateRegisterComponent = /** @class */ (function () {
         return true;
     };
     CreateRegisterComponent.prototype.onChange = function (deviceValue) {
-        debugger;
         var inputIdCompanie = document.getElementById("Nit");
         var inputId = document.getElementById("numDoc");
         if (deviceValue == 'Cedula de ciudadanía') {
@@ -3657,7 +3657,6 @@ var CreateRegisterComponent = /** @class */ (function () {
     };
     CreateRegisterComponent.prototype.createUser = function () {
         var _this = this;
-        debugger;
         var typeIdThird = document.getElementById("typeDoc");
         var typeIdCompanie = document.getElementById("typeDocComp");
         var typeDoc = null;
@@ -3752,7 +3751,6 @@ var CreateRegisterComponent = /** @class */ (function () {
         rootObject.content = register;
         rootObject.message = null;
         rootObject.status = null;
-        debugger;
         var builder = new _domain_builders_user_model_builder__WEBPACK_IMPORTED_MODULE_4__["UserBuilder"]()
             .buildWithuser(this.user)
             .buildWithuserInfo(this.userInfo)
@@ -3768,7 +3766,6 @@ var CreateRegisterComponent = /** @class */ (function () {
     });
     CreateRegisterComponent.prototype.mapUser = function (base) {
         var _this = this;
-        debugger;
         if (base.status == "CONFLICT") {
             this.spinner.hide();
             this.dialog.open(_Dialog_DialogComponent__WEBPACK_IMPORTED_MODULE_13__["DialogComponent"], { data: 2 }).afterClosed().subscribe(function (result) {
@@ -3816,13 +3813,13 @@ var CreateRegisterComponent = /** @class */ (function () {
                 });
             }
             else if (true) {
-                // if (RuesThird == Catalog.ValueRuesInactivo || RuesThird == Catalog.ValueRuesSinResultado || RuesThird == Catalog.ValueRuesErrorConsulta) {
-                //   this.spinner.hide();
-                //   this.dialog
-                //     .open(RuesUserComponent)
-                //     .afterClosed()
-                //     .subscribe(data => this.isPersonJuridic(data))
-                // }
+                if (RuesThird == _domain_enums_Catalog_enum__WEBPACK_IMPORTED_MODULE_12__["Catalog"].ValueRuesInactivo || RuesThird == _domain_enums_Catalog_enum__WEBPACK_IMPORTED_MODULE_12__["Catalog"].ValueRuesSinResultado || RuesThird == _domain_enums_Catalog_enum__WEBPACK_IMPORTED_MODULE_12__["Catalog"].ValueRuesErrorConsulta) {
+                    this.spinner.hide();
+                    this.dialog
+                        .open(_rues_rues_user__WEBPACK_IMPORTED_MODULE_15__["RuesUserComponent"])
+                        .afterClosed()
+                        .subscribe(function (data) { return _this.isPersonJuridic(data); });
+                }
                 switch (RuesThird) {
                     case _domain_enums_Catalog_enum__WEBPACK_IMPORTED_MODULE_12__["Catalog"].ValueRuesActivo: {
                         this.spinner.hide();
@@ -3888,7 +3885,7 @@ var CreateRegisterComponent = /** @class */ (function () {
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('wizard', { read: false, static: false }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", angular_archwizard__WEBPACK_IMPORTED_MODULE_19__["WizardComponent"])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", angular_archwizard__WEBPACK_IMPORTED_MODULE_20__["WizardComponent"])
     ], CreateRegisterComponent.prototype, "wizard", void 0);
     CreateRegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -3896,9 +3893,9 @@ var CreateRegisterComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./create-user.scss */ "./src/client/app/modules/user/create-user/create-user.scss")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_services_register_register_provider__WEBPACK_IMPORTED_MODULE_10__["UserToken"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_services_register_status_provider__WEBPACK_IMPORTED_MODULE_18__["StatusToken"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_services_register_category_provider__WEBPACK_IMPORTED_MODULE_17__["CategoryToken"])),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], Object, _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _angular_router__WEBPACK_IMPORTED_MODULE_14__["Router"], Object, Object, ngx_spinner__WEBPACK_IMPORTED_MODULE_20__["NgxSpinnerService"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](4, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_services_register_status_provider__WEBPACK_IMPORTED_MODULE_19__["StatusToken"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](5, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_services_register_category_provider__WEBPACK_IMPORTED_MODULE_18__["CategoryToken"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"], Object, _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"], _angular_router__WEBPACK_IMPORTED_MODULE_14__["Router"], Object, Object, ngx_spinner__WEBPACK_IMPORTED_MODULE_21__["NgxSpinnerService"]])
     ], CreateRegisterComponent);
     return CreateRegisterComponent;
 }());
