@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="37.395" height="45.432" viewBox="0 0 37.395 45.432">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="37.395" height="45.432" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Info_Adicional" data-name="Info Adicional" transform="translate(-619.666 -698)">
+    <g id="Info_Empresa" data-name="Info Empresa" transform="translate(619.666 698)" clip-path="url(#clip-path)">
+      <g id="Grupo_338" data-name="Grupo 338" transform="translate(1.5 1.5)">
+        <g id="Grupo_329" data-name="Grupo 329" transform="translate(0)">
+          <g id="Grupo_328" data-name="Grupo 328">
+            <path id="Trazado_446" data-name="Trazado 446" d="M15401.5,2666.976h34.395v42.432H15401.5Z" transform="translate(-15401.499 -2666.976)" fill="none" stroke="#66d1cb" stroke-linejoin="round" stroke-width="3"/>
+          </g>
+        </g>
+      </g>
+      <line id="Línea_12" data-name="Línea 12" x2="33" transform="translate(2.245 30)" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+      <line id="Línea_13" data-name="Línea 13" x2="33" transform="translate(2.245 30)" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+      <g id="Grupo_343" data-name="Grupo 343" transform="translate(8.245 11)">
+        <line id="Línea_14" data-name="Línea 14" x2="8" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+        <line id="Línea_15" data-name="Línea 15" x2="8" transform="translate(13)" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g id="Grupo_344" data-name="Grupo 344" transform="translate(8.245 17)">
+        <line id="Línea_14-2" data-name="Línea 14" x2="8" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+        <line id="Línea_15-2" data-name="Línea 15" x2="8" transform="translate(13)" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g id="Grupo_345" data-name="Grupo 345" transform="translate(8.245 23)">
+        <line id="Línea_14-3" data-name="Línea 14" x2="8" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+        <line id="Línea_15-3" data-name="Línea 15" x2="8" transform="translate(13)" fill="none" stroke="#66d1cb" stroke-linecap="round" stroke-width="3"/>
+      </g>
+      <g id="Grupo_346" data-name="Grupo 346" transform="translate(8.245 37)">
+        <line id="Línea_14-4" data-name="Línea 14" x2="21" fill="none" stroke="#00b2a9" stroke-linecap="round" stroke-width="3"/>
+      </g>
+    </g>
+  </g>
+</svg>
