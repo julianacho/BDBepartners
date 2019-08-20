@@ -1,0 +1,11 @@
+<svg id="Picrure_Icon" data-name="Picrure Icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="62.64" height="57.192" viewBox="0 0 62.64 57.192">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="62.64" height="57.193" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Componente_5" data-name="Componente 5" transform="translate(0 0)" clip-path="url(#clip-path)">
+    <path id="Trazado_477" data-name="Trazado 477" d="M58.335,15.759H49.7l-4.984-5.447H28.377v5.447H42.321L47.3,21.206h11.03V53.888H14.759V29.377H9.313V53.888a5.463,5.463,0,0,0,5.447,5.447H58.335a5.463,5.463,0,0,0,5.447-5.447V21.206A5.463,5.463,0,0,0,58.335,15.759ZM22.93,37.547A13.617,13.617,0,1,0,36.547,23.93,13.622,13.622,0,0,0,22.93,37.547Zm13.617-8.17a8.17,8.17,0,1,1-8.17,8.17A8.194,8.194,0,0,1,36.547,29.377Z" transform="translate(-1.142 -2.142)" fill="#00b2a9" opacity="0.6"/>
+    <path id="Trazado_478" data-name="Trazado 478" d="M13.617,14.617h8.17V9.17h-8.17V1H8.17V9.17H0v5.447H8.17v8.17h5.447Z" transform="translate(0 -1)" fill="#00b2a9"/>
+  </g>
+</svg>
