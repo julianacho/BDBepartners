@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45.25" height="45.25" viewBox="0 0 45.25 45.25">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="45.25" height="45.25" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="outline-place-24px" clip-path="url(#clip-path)">
+    <g id="outline-place-24px-2" data-name="outline-place-24px" opacity="0.8">
+      <path id="Trazado_474" data-name="Trazado 474" d="M0,0H45.25V45.25H0Z" fill="none"/>
+      <path id="Trazado_475" data-name="Trazado 475" d="M18.2,2A13.188,13.188,0,0,0,5,15.2c0,9.9,13.2,24.51,13.2,24.51S31.4,25.1,31.4,15.2A13.188,13.188,0,0,0,18.2,2ZM8.771,15.2a9.427,9.427,0,0,1,18.854,0c0,5.43-5.43,13.556-9.427,18.628C14.276,28.792,8.771,20.571,8.771,15.2Z" transform="translate(4.427 1.771)" fill="#00b2a9"/>
+      <circle id="Elipse_69" data-name="Elipse 69" cx="4.714" cy="4.714" r="4.714" transform="translate(17.911 12.255)" fill="#00b2a9"/>
+    </g>
+  </g>
+</svg>
