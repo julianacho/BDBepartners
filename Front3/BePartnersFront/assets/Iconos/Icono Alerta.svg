@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="76.481" height="77.432" viewBox="0 0 76.481 77.432">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="76.482" height="77.432" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Icono_Alerta" data-name="Icono Alerta" clip-path="url(#clip-path)">
+    <g id="Grupo_254" data-name="Grupo 254" transform="translate(-548 -1340)">
+      <ellipse id="Elipse_36" data-name="Elipse 36" cx="19.126" cy="19.127" rx="19.126" ry="19.127" transform="translate(586.229 1340)" fill="#b7bf10" opacity="0.8"/>
+      <g id="Rectángulo_61" data-name="Rectángulo 61" transform="translate(548 1382.558)" fill="none" stroke="#b1aaaa" stroke-width="8">
+        <path d="M20,0H32.76a20,20,0,0,1,20,20V32.875a2,2,0,0,1-2,2H2a2,2,0,0,1-2-2V20A20,20,0,0,1,20,0Z" stroke="none"/>
+        <path d="M20,4H32.76a16,16,0,0,1,16,16v8.875a2,2,0,0,1-2,2H6a2,2,0,0,1-2-2V20A16,16,0,0,1,20,4Z" fill="none"/>
+      </g>
+      <line id="Línea_4" data-name="Línea 4" x2="0.173" y2="10" transform="translate(605.5 1359.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="8"/>
+      <g id="Elipse_17" data-name="Elipse 17" transform="translate(554.882 1343.56)" fill="none" stroke="#b1aaaa" stroke-width="8">
+        <ellipse cx="18.351" cy="18.352" rx="18.351" ry="18.352" stroke="none"/>
+        <ellipse cx="18.351" cy="18.352" rx="14.351" ry="14.352" fill="none"/>
+      </g>
+    </g>
+    <ellipse id="Elipse_42" data-name="Elipse 42" cx="4.351" cy="4.352" rx="4.351" ry="4.352" transform="translate(52.882 3.56)" fill="#fff"/>
+  </g>
+</svg>
