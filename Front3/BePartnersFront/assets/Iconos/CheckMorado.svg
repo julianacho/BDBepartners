@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="26.711" height="21.854" viewBox="0 0 26.711 21.854">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="26.711" height="21.854" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="CheckMorado" clip-path="url(#clip-path)">
+    <g id="Grupo_242" data-name="Grupo 242" transform="translate(-541.528 -1838.867)">
+      <rect id="Rectángulo_564" data-name="Rectángulo 564" width="13.333" height="5" rx="2.5" transform="translate(544.028 1849.627) rotate(30)" fill="#6d2077"/>
+      <rect id="Rectángulo_565" data-name="Rectángulo 565" width="24.333" height="5" rx="2.5" transform="matrix(0.643, -0.766, 0.766, 0.643, 548.769, 1857.507)" fill="#6d2077"/>
+      <rect id="Rectángulo_566" data-name="Rectángulo 566" width="24.333" height="5" rx="2.5" transform="matrix(0.643, -0.766, 0.766, 0.643, 548.769, 1857.507)" fill="#6d2077"/>
+    </g>
+  </g>
+</svg>
